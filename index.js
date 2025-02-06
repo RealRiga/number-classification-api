@@ -1,11 +1,11 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 
@@ -79,7 +79,7 @@ app.get("/api/classify-number", async (req, res) => {
     const response = await axios.get(`http://numbersapi.com/${num}/math`);
     funFact = response.data;
     if (funFact.includes("we're missing a fact")) {
-        funFact = "No specific fun fact available for this number.";
+      funFact = "No specific fun fact available for this number.";
     }
   } catch (error) {
     funFact = "Fun fact unavailable due to API issue.";
